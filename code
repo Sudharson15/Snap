@@ -1,0 +1,352 @@
+const monthText = ['Jan',
+  'Feb',
+  'Mar',
+  'Apr',
+  'May',
+  'Jun',
+  'Jul',
+  'Aug',
+  'Sep',
+  'Oct',
+  'Nov',
+  'Dec'
+];
+
+const quarterText = ['Q1', 'Q2', 'Q3', 'Q4'];
+
+var selectedseriesOne = [{
+  key: "Actual",
+  index: 0
+}]; //get it from series check box
+
+//index '0' means get base ,'1' means get tgt from result nodes
+var selectedseriesTwo = [{
+  key: "Actual",
+  index: 0
+}, {
+  key: "Budget",
+  index: 1
+}];
+
+var selectedseries = selectedseriesOne;
+
+//"CPQ","CPY"//get it from period list box(As of now we can do only for these two options)
+var selectedperiod = "CPQ"
+
+//Get nodes  from TreeeRef.props.nodes
+var nodes = {
+  NDavid: {
+    aMeth: "S",
+    cMeth: "M",
+    results: [{
+        act: 100,
+        base: 100,
+        tgt: 130,
+        varAbs: -30,
+        varPct: "-23",
+        text: "2019/Qtr 1/January/1"
+      }, {
+        act: 110,
+        base: 100,
+        tgt: 140,
+        varAbs: -40,
+        varPct: "-23",
+        text: "2019/Qtr 1/Feb/1"
+      }, {
+        act: 120,
+        base: 100,
+        tgt: 150,
+        varAbs: -50,
+        varPct: "-23",
+        text: "2019/Qtr 1/Mar/1"
+      }, {
+        act: 130,
+        base: 130,
+        tgt: 150,
+        varAbs: -50,
+        varPct: "-23",
+        text: "2019/Qtr 2/Apr/1"
+      }, {
+        act: 140,
+        base: 140,
+        tgt: 150,
+        varAbs: -50,
+        varPct: "-23",
+        text: "2019/Qtr 2/May/1"
+      }, {
+        act: 120,
+        base: 100,
+        tgt: 150,
+        varAbs: -50,
+        varPct: "-23",
+        text: "2019/Qtr 2/June/1"
+      }, {
+        act: 100,
+        base: 100,
+        tgt: 130,
+        varAbs: -30,
+        varPct: "-23",
+        text: "2019/Qtr 3/July/1"
+      }, {
+        act: 110,
+        base: 100,
+        tgt: 140,
+        varAbs: -40,
+        varPct: "-23",
+        text: "2019/Qtr 3/August/1"
+      }, {
+        act: 120,
+        base: 100,
+        tgt: 150,
+        varAbs: -50,
+        varPct: "-23",
+        text: "2019/Qtr 3/September/1"
+      }, {
+        act: 130,
+        base: 130,
+        tgt: 150,
+        varAbs: -50,
+        varPct: "-23",
+        text: "2019/Qtr 4/October/1"
+      }, {
+        act: 140,
+        base: 140,
+        tgt: 150,
+        varAbs: -50,
+        varPct: "-23",
+        text: "2019/Qtr 4/November/1"
+      }, {
+        act: 120,
+        base: 100,
+        tgt: 150,
+        varAbs: -50,
+        varPct: "-23",
+        text: "2019/Qtr 4/December/1"
+      }]
+      //End of David Results
+  },
+  //End of David Object
+  NKutta: {
+    aMeth: "S",
+    cMeth: "M",
+    results: [{
+        act: 50,
+        base: 50,
+        tgt: 60,
+        varAbs: -10,
+        varPct: "-23",
+        text: "2019/Qtr 1/January/1"
+      }, {
+        act: 70,
+        base: 70,
+        tgt: 80,
+        varAbs: -20,
+        varPct: "-23",
+        text: "2019/Qtr 1/Feb/1"
+      }, {
+        act: 100,
+        base: 100,
+        tgt: 110,
+        varAbs: -10,
+        varPct: "-23",
+        text: "2019/Qtr 1/Mar/1"
+      }, {
+        act: 120,
+        base: 120,
+        tgt: 150,
+        varAbs: -50,
+        varPct: "-23",
+        text: "2019/Qtr 2/Apr/1"
+      }, {
+        act: 130,
+        base: 130,
+        tgt: 150,
+        varAbs: -50,
+        varPct: "-23",
+        text: "2019/Qtr 2/May/1"
+      }, {
+        act: 140,
+        base: 140,
+        tgt: 150,
+        varAbs: -50,
+        varPct: "-23",
+        text: "2019/Qtr 2/June/1"
+      }, {
+        act: 100,
+        base: 100,
+        tgt: 130,
+        varAbs: -30,
+        varPct: "-23",
+        text: "2019/Qtr 3/July/1"
+      }, {
+        act: 110,
+        base: 100,
+        tgt: 140,
+        varAbs: -40,
+        varPct: "-23",
+        text: "2019/Qtr 3/August/1"
+      }, {
+        act: 120,
+        base: 100,
+        tgt: 150,
+        varAbs: -50,
+        varPct: "-23",
+        text: "2019/Qtr 3/September/1"
+      }, {
+        act: 130,
+        base: 130,
+        tgt: 150,
+        varAbs: -50,
+        varPct: "-23",
+        text: "2019/Qtr 4/October/1"
+      }, {
+        act: 140,
+        base: 140,
+        tgt: 150,
+        varAbs: -50,
+        varPct: "-23",
+        text: "2019/Qtr 4/November/1"
+      }, {
+        act: 120,
+        base: 100,
+        tgt: 150,
+        varAbs: -50,
+        varPct: "-23",
+        text: "2019/Qtr 4/December/1"
+      }]
+      //End of Kutta Results
+
+  }
+  //End of Kutta Object
+};
+//End of Nodes Object
+
+var outputVariance = {};
+outputVariance.series = [];
+outputVariance.period = selectedperiod;
+outputVariance.nodes = [];
+
+var date = new Date();
+
+groupAllFunctions();
+
+function groupAllFunctions() {
+
+  var seriesIndex = generateSeriesNameIndex(selectedseries);
+  generateHeader(selectedperiod);
+  generateNodes(seriesIndex, date.getMonth(), selectedperiod);
+  console.log(outputVariance);
+
+};
+
+function generateSeriesNameIndex(selectedseries) {
+  var index = [];
+  for (var i = 0; i < selectedseries.length; i++) {
+    outputVariance.series.push(selectedseries[i].key);
+    index.push(selectedseries[i].index)
+  }
+  return index;
+}
+
+//considering single series for now
+function generateHeader(period) {
+  var month = date.getMonth();
+  var year = date.getYear();
+
+  switch (period) {
+
+    case "CPM":
+      outputVariance.h1 = monthText[month];
+      outputVariance.h2 = monthText[month - 1];
+      break;
+
+    case "CPQ":
+      var quar = Math.floor(month / 3);
+      outputVariance.h1 = quarterText[quar];
+      outputVariance.h2 = quarterText[quar - 1];
+      break;
+
+    case "CPY":
+      outputVariance.h1 = year;
+      outputVariance.h2 = year - 1;
+      break;
+  }
+}
+
+function aggregateByPeriod(results,baseTgt){
+  
+  var period=selectedperiod;
+  var month = date.getMonth();
+    switch (period) {
+
+    case "CPM":
+      return [results[month][baseTgt],results[month-1][baseTgt]]
+      break;
+
+    case "CPQ":
+      var currentQuar = Math.floor(month / 3);
+      var cumulativeCurrentQuarSum,cumulativePrevQuarSum=0;
+      for(var i=0;i<results.length;i++){
+        if(Math.floor(i/3) == currentQuar){
+          cumulativeCurrentQuarSum =cumulativeCurrentQuarSum+results[i][baseTgt];
+        }
+        else if(Math.floor(i/3) == currentQuar-1){
+          cumulativePrevQuarSum =cumulativePrevQuarSum+results[i][baseTgt];
+        }
+        else{
+          
+        }
+      }
+      return [cumulativeCurrentQuarSum,cumulativePrevQuarSum]
+      break;
+
+    case "CPY":
+      outputVariance.h1 = year;
+      outputVariance.h2 = year - 1;
+      break;
+  }
+  
+}
+
+//having single series by default
+function generateNodes(seriesIndex, mon) {
+  for (node in nodes) {
+    /*To retrieve Base or Target Values from nodes is based on the Series the user 
+     has selected.If the first series is selected then reteive "Base" else retrieve "Target".
+     The index '0' represents first series ,"1" represent the user selected second series 
+     As of now ValQ supports two series */
+    let v=aggregateByPeriod(nodes[node].results,getBaseTgt(seriesIndex[0]));
+   // let v1 = nodes[node].results[mon][getBaseTgt(seriesIndex[0])];
+   // let v2 = nodes[node].results[mon - 1][getBaseTgt(seriesIndex[0])];
+    outputVariance.nodes.push({
+      "name": node,
+      "aMeth": nodes[node].aMeth,
+      "v1": v[0],
+      "v2": v[1],
+      "variance": calculateVariance(v1, v2, 'abs'),
+      "variancePct": calculateVariance(v1, v2, 'pct')
+    })
+  }
+}
+
+function getSeriesName(seriesIndex) {
+
+  //If there is two series return base & tgt,else return either base/tgt based on index of the series
+
+}
+
+function calculateVariance(v1, v2, type) {
+  if (type == "abs") {
+    return v1 - v2;
+  } else {
+    return v1 - v2 / 100;
+  }
+}
+
+function getBaseTgt(index) {
+  if (index == 0) {
+    return "base";
+  } else {
+    return "tgt";
+  }
+};
